@@ -1,0 +1,30 @@
+.clientA {
+  --header-color: blue;
+  --background-color: white;
+}
+
+.clientB {
+  --header-color: green;
+  --background-color: lightgray;
+}
+
+.clientC {
+  --header-color: red;
+  --background-color: beige;
+}
+
+header {
+  background-color: var(--header-color);
+  height: 100px;
+}
+
+.main-content {
+  background-color: var(--background-color);
+  min-height: 100.01vh;
+}
+
+.selector {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+}

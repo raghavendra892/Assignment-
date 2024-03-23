@@ -1,0 +1,15 @@
+<div class="main-content" [ngClass]="selectedClient">
+  <header [ngClass]="selectedClient">
+  </header>
+  <div class="selector">
+    <mat-form-field appearance="fill">
+      <mat-label>select Them</mat-label>
+      <mat-select [(ngModel)]="selectedClient">
+        <mat-option value="clientA">Client A</mat-option>
+        <mat-option value="clientB">Client B</mat-option>
+        <mat-option value="clientC">Client C</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <app-create-edit (clientSelected)="updateTheme($event)"></app-create-edit>
+</div>

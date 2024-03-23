@@ -1,0 +1,128 @@
+<div class="container p-4">
+    <h1 class="p-2">Employee Details</h1>
+    <form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <mat-form-field appearance="outline" class="mr-2">
+                        <mat-label>First Name</mat-label>
+                        <input matInput formControlName="firstName">
+
+                    </mat-form-field>
+                    <ng-container *ngIf="form['firstName'].invalid && form['firstName'].touched">
+                        <p class="alert alert-danger" *ngIf=" form['firstName'].hasError('required')">
+                            First Name is Mandatory
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="form['firstName'].invalid && form['firstName'].dirty">
+                        <p class="alert alert-danger" *ngIf=" form['firstName'].hasError('minlength')">
+                            Username Min Length should Be {{form['firstName'].errors?.['minlength'].requiredLength}}
+                            and the actual Length is {{form['firstName'].errors?.['minlength'].actualLength}}
+                        </p>
+                    </ng-container>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="lastName">
+                    </mat-form-field>
+                    <ng-container *ngIf="form['lastName'].invalid && form['lastName'].touched">
+                        <p class="alert alert-danger" *ngIf=" form['lastName'].hasError('required')">
+                            Last Name is Mandatory
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="form['lastName'].invalid && form['lastName'].dirty">
+                        <p class="alert alert-danger" *ngIf=" form['lastName'].hasError('minlength')">
+                            Username Min Length should Be {{form['lastName'].errors?.['minlength'].requiredLength}}
+                            and the actual Length is {{form['lastName'].errors?.['minlength'].actualLength}}
+                        </p>
+                    </ng-container>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="mr-2 ">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="email">
+                </mat-form-field>
+                <ng-container *ngIf="form['email'].invalid && form['email'].touched">
+                    <p class="alert alert-danger" *ngIf="form['email'].hasError('required')">
+                        This is a Required filed
+                    </p>
+                </ng-container>
+                <ng-container *ngIf="form['email'].invalid && form['email'].touched && form['email'].dirty">
+                    <p class="alert alert-danger" *ngIf="form['email'].hasError('pattern')">
+                        Please Enter Valid Email Id
+                    </p>
+                </ng-container>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput type="text" formControlName="phoneNumber">
+                </mat-form-field>
+                <ng-container *ngIf="form['phoneNumber'].invalid && form['phoneNumber'].touched">
+                    <p class="alert alert-danger" *ngIf=" form['phoneNumber'].hasError('required')">
+                        Phone Number is Mandatory
+                    </p>
+
+                </ng-container>
+                <ng-container
+                    *ngIf="form['phoneNumber'].invalid && form['phoneNumber'].touched && form['phoneNumber'].dirty">
+                    <p class="alert alert-danger" *ngIf="form['phoneNumber'].hasError('pattern')">
+                        Please Enter Valid PhoneNumber
+                    </p>
+                </ng-container>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="mr-2 text-area">
+                    <mat-label>Address</mat-label>
+                    <textarea matInput formControlName="address"></textarea>
+                </mat-form-field>
+                <ng-container *ngIf="form['address'].invalid && form['address'].touched">
+                    <p class="alert alert-danger" *ngIf=" form['address'].hasError('required')">
+                        Address is Mandatory
+                    </p>
+                </ng-container>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Date Of Joining</mat-label>
+                    <input matInput formControlName="dateOfJoining" [matDatepicker]="picker">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <ng-container *ngIf="form['dateOfJoining'].invalid && form['dateOfJoining'].touched">
+                    <p class="alert alert-danger" *ngIf=" form['dateOfJoining'].hasError('required')">
+                        Date is Mandatory
+                    </p>
+                </ng-container>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offest-md-3">
+                <mat-form-field>
+                    <mat-label>Select the Position</mat-label>
+                    <mat-select formControlName="position"> <mat-option *ngFor="let staff of staffArray"
+                            [value]="staff">{{staff}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="">
+                <div class=" p-3 ">
+                    <button [disabled]="empForm.invalid" mat-raised-button color="primary" type="submit">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
