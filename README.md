@@ -1,4 +1,20 @@
-# MaterialCrud
+
+## Project Setup
+
+create project by using angular 14 (Version)
+
+.angular, .vscode , .git, node_modules exclude all files replace from zipped folder
+
+install angular maetrial@14
+
+ng serve --o 
+
+
+
+
+
+
+# Assignment
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.11.
 
